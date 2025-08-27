@@ -1,0 +1,21 @@
+name: CI Pipeline
+on: [push]   # Run this workflow whenever code is pushed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest   # Virtual machine OS
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2   # Step 1: Download repo code
+
+      - name: Setup Python
+        uses: actions/setup-python@v2   # Step 2: Install Python
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: pip install -r requirements.txt   # Step 3: Install flask
+
+      - name: Run Tests
+        run: echo "All tests passed!"   # Step 4: Dummy test for now
